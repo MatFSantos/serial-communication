@@ -115,7 +115,7 @@ void gpio_irq_handler(uint gpio, uint32_t event) {
 int main (){
     PIO pio = pio0;
     bool ok;
-    char c;
+
     // set clock freq to 128MHz
     // ok = set_sys_clock_khz(128000, false);
     // if (ok) printf("clock set to %ld\n", clock_get_hz(clk_sys));
