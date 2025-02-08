@@ -15,11 +15,9 @@ _ws2812b * ws;
 ssd1306_t ssd;
 static volatile uint32_t last_time = 0;
 
-ssd1306_t * init_display(){
-    ssd1306_t * ssd;
-    ssd1306_init(ssd, WIDTH, HEIGHT, false, I2C_ADDRESS, I2C_PORT);
-    ssd1306_config(ssd);
-    ssd1306_send_data(ssd);
+char c = '\0';
+char *msg_blue;
+char *msg_green;
 
     return ssd;
 }
