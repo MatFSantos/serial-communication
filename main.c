@@ -55,6 +55,46 @@ void init_gpio(){
     init_push_button(PIN_BUTTON_B);
 }
 
+/**
+ * @brief Makes the message that will be show in display, with the LED status
+ * 
+ * @param  pin The GPIO pin number of the LED
+ * 
+ * @return the message that will be show in display
+ */
+char * get_led_msg(uint8_t pin){
+    if (pin == PIN_GREEN_LED)
+        return gpio_get(PIN_GREEN_LED) ? "green led on" : "green led off";
+    else if (pin == PIN_BLUE_LED)
+        return gpio_get(PIN_BLUE_LED) ? "blue led on" : "blue led off";
+}
+
+/**
+ * @brief Update the display informations
+ */
+void update_display() {
+    ssd1306_fill(&ssd, false);
+    msg_green = get_led_msg(PIN_GREEN_LED);
+    ssd1306_draw_string(&ssd, msg_green, 0, 0);
+
+    msg_blue = get_led_msg(PIN_BLUE_LED);
+    ssd1306_draw_string(&ssd, msg_blue, 0, 10);
+
+    if (c != '\0')
+    {
+        ssd1306_draw_string(&ssd, "caractere", 27, 26);
+        ssd1306_draw_char(&ssd, c, 59, 42);
+    }
+    ssd1306_send_data(&ssd); // update display
+}
+
+
+/**
+ * @brief Handler function to interruption
+ * 
+ * @param gpio GPIO that triggered the interruption
+ * @param event The event which caused the interruption
+ */
 void gpio_irq_handler(uint gpio, uint32_t event) {
     uint32_t current_time = to_ms_since_boot(get_absolute_time());
     uint led;
