@@ -120,6 +120,7 @@ int main (){
     ok = set_sys_clock_khz(128000, false);
     if (ok) printf("clock set to %ld\n", clock_get_hz(clk_sys));
 
+    // init gpios and stdio functions
     stdio_init_all();
     init_gpio();
 
