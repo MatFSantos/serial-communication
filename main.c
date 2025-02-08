@@ -12,7 +12,7 @@
 #include "modules/ws2812b.h"
 
 _ws2812b * ws;
-ssd1306_t * ssd;
+ssd1306_t ssd;
 static volatile uint32_t last_time = 0;
 
 ssd1306_t * init_display(){
