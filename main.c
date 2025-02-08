@@ -23,6 +23,14 @@ ssd1306_t * init_display(){
 
     return ssd;
 }
+
+
+/**
+ * @brief Initialize the all GPIOs that will be used in project
+ *      - I2C;
+ *      - RGB LED;
+ *      - Push buttons A and B 
+ */
 void init_gpio(){
     /** initialize i2c communication */
     int baudrate = 400*1000; // 400kHz baud rate for i2c communication
