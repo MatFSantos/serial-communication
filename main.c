@@ -125,11 +125,11 @@ int main (){
 
     // get ws and ssd struct
     ws = init_ws2812b(pio, PIN_WS2812B);
-    ssd = init_display();
+    init_display();
 
     // Clear display 
-    ssd1306_fill(ssd, false);
-    ssd1306_send_data(ssd);
+    ssd1306_fill(&ssd, false);
+    ssd1306_send_data(&ssd);
 
     // configure interruptions handlers
     gpio_set_irq_enabled_with_callback(PIN_BUTTON_A, GPIO_IRQ_EDGE_FALL, 1, &gpio_irq_handler);
