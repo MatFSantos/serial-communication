@@ -117,8 +117,8 @@ int main (){
     bool ok;
 
     // set clock freq to 128MHz
-    // ok = set_sys_clock_khz(128000, false);
-    // if (ok) printf("clock set to %ld\n", clock_get_hz(clk_sys));
+    ok = set_sys_clock_khz(128000, false);
+    if (ok) printf("clock set to %ld\n", clock_get_hz(clk_sys));
 
     stdio_init_all();
     init_gpio();
