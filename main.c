@@ -136,21 +136,24 @@ int main (){
     gpio_set_irq_enabled_with_callback(PIN_BUTTON_B, GPIO_IRQ_EDGE_FALL, 1, &gpio_irq_handler);
     sleep_ms(50);
 
+    // show informations in display
+    update_display();
     while (1) {
-        // if (stdio_usb_connected()) {
+        if (stdio_usb_connected()) {
             if (scanf("%c", &c) == 1) {
-                if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {  // Letras (A-Z ou a-z)
+                if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) // Letras (A-Z ou a-z)
                     printf("Letra recebida: '%c'.\n", c);
-                    // ssd1306_draw_string(ssd, &c, x, y);
-                } else if (c >= 48 && c <= 57) {  // Números (0-9)
+                else if (c >= 48 && c <= 57) {  // Números (0-9)
                     printf("Número recebido: '%c'.\n", c);
-                    // ssd1306_draw_string(ssd, &c, x, y);
                     ws2812b_plot(ws, NUMERIC[c - '0']); // convert char in a integer
                 } else {
                     printf("O caractere '%c' não é uma letra nem um número.\n", c);
+                    c = '\0'; 
                 }
+                update_display();
             }
-        // }
+        }
+        sleep_ms(200);
     }
 
     return 0;
