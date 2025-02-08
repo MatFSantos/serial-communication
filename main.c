@@ -98,18 +98,16 @@ void update_display() {
 void gpio_irq_handler(uint gpio, uint32_t event) {
     uint32_t current_time = to_ms_since_boot(get_absolute_time());
     uint led;
-    char * msg;
-    if(current_time - last_time >= 200){
-        if (gpio == PIN_BUTTON_A) {
-            led = PIN_GREEN_LED;
-            msg = gpio_get(led) ? "LED verde apagado" : "LED verde aceso";
-        } else {
-            led = PIN_BLUE_LED;
-            msg = gpio_get(led)? "LED azul apagado" : "LED azul aceso";
-        }
+    if(current_time - last_time >= 200) { // debounce
+        // select the LED according pressed button
+        if (gpio == PIN_BUTTON_A) led = PIN_GREEN_LED;
+        else led = PIN_BLUE_LED; 
+        
+        // update led and display
         gpio_put(led, !gpio_get(led));
-        printf("%s\n", msg);
-        // ssd1306_draw_string(ssd, msg, x, y);
+        printf("%s\n", get_led_msg(led));
+        update_display();
+
         last_time = current_time;
     }
 }
