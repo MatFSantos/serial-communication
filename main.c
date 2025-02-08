@@ -1,13 +1,10 @@
 #include <stdio.h>
-#include <string.h>
 
 #include "pico/stdlib.h"
 #include "hardware/timer.h"
 #include "hardware/pio.h"
 #include "hardware/clocks.h"
-#include "hardware/pwm.h"
 #include "hardware/i2c.h"
-#include "hardware/uart.h"
 
 #include "modules/led.h"
 #include "modules/push_button.h"
