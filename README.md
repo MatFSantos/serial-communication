@@ -40,4 +40,4 @@ Já a matriz de LEDS e display são controladas via UART, a partir de um monitor
 
 ## Vídeo Ensaio
 
-Clique em ***[link do video](https://drive.google.com/file/d/13nEDxBb7f5qj4OJI7Dda6RjyALVxjWtO/view?usp=sharing)*** para visualizar o vídeo ensaio do projeto.
+Clique em ***[link do video](https://drive.google.com/file/d/1vsgxwYzQk_zL7GVnioR4XT7UeSVNTtEv/view?usp=sharing)*** para visualizar o vídeo ensaio do projeto.
